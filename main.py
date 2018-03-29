@@ -11,7 +11,7 @@ Rainfall = dataset[...,2]
 #creating a model
 
 model = Sequential()
-model.add(Dense(8, input_dim=8, activation='relu'))
-model.add(Dense(8, activation='sigmoid'))
-model.add(Dense(1, activation='sigmoid'))
+model.add(Dense(2, input_dim=2, activation='linear'))
+model.add(Dense(4, activation='sigmoid'))
+model.add(Dense(1, activation='linear'))
 

@@ -16,13 +16,13 @@ for x in month:
 	output = dataset[:,3]
 	input = dataset[:,0:3]
 	model.compile(optimizer='adam',loss='mean_absolute_error',metrics=['mean_absolute_error'])
-	model.fit(input,output, epochs=10000, batch_size=15)
+	model.fit(input,output, epochs=30000, batch_size=30)
 	scores = model.evaluate(input, output)
 	print("\n%s: %.2f%%" % (model.metrics_names[1], scores[1]))	
 
 
-for x in month:
-	dataset2 = numpy.loadtxt("./Testing_Data/Month"+`x`+"/Test.csv", delimiter=",")
+for y in month:
+	dataset2 = numpy.loadtxt("./Testing_Data/Month"+`y`+"/Test.csv", delimiter=",")
 	Z = dataset2[:,0:3]
 	predictions = model.predict(Z)
-	numpy.savetxt("./Results/Month"+`x`+".csv",predictions)
+	numpy.savetxt("./Results/Month"+`y`+".csv",predictions)

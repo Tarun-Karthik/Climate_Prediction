@@ -28,4 +28,4 @@ for y in months:
     dataset = numpy.loadtxt("./Training_Data/Month"+`y`+"/Train.csv", delimiter=",")
     input = dataset[:,0:3]
     predictions = model.predict(input)
-    numpy.savetxt("./Results/Month"+`y`+".csv",numpy.hstack((dataset,predictions)),delimiter = ',')
+    numpy.savetxt("./Results/Month"+`y`+".csv",numpy.hstack((dataset,predictions)),delimiter = ',',fmt='%f')

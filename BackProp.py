@@ -18,14 +18,14 @@ Data = numpy.vstack(Data)
 input = Data[:,0:3]
 output = Data[:,3]
 
-model.compile(optimizer='nadam',loss='mean_absolute_error',metrics=['mean_absolute_error'])
-model.fit(input,output, epochs=1500, batch_size=45)
+model.compile(optimizer='nadam',loss='mean_absolute_error', metrics=['mean_absolute_error'])
+model.fit(input,output, epochs=5000, batch_size=45)
 scores = model.evaluate(input, output)
 print("\n%s: %.2f%%" % (model.metrics_names[1], scores[1]))
 
 
 for y in months:
-    dataset = numpy.loadtxt("./Training_Data/Month"+`y`+"/Train.csv", delimiter=",")
+    dataset = numpy.loadtxt("./Testing_Data/Month"+`y`+"/Test.csv", delimiter=",")
     input = dataset[:,0:3]
     predictions = model.predict(input)
-    numpy.savetxt("./Results/Month"+`y`+".csv",numpy.hstack((dataset,predictions)),delimiter = ',',fmt='%f')
+    numpy.savetxt("./Results/Month"+`y`+".csv",numpy.hstack((input,predictions)),delimiter = ',',fmt='%f')
